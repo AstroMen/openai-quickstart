@@ -1,4 +1,6 @@
-# PDF Translator GUI
+# PDF Translator GUI 说明文档
+
+本文档对应的代码路径为：`openai-translator/ai_translator/gui/translator_gui.py`。
 
 此代码提供了一个基于`tkinter`的GUI，用于翻译PDF文件。
 
