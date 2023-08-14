@@ -52,3 +52,25 @@ translate_button = tk.Button(frame, text="Translate", command=self.on_translate_
 translate_button.grid(row=2, column=0, columnspan=3, pady=20)
 ```
 
+### 选择PDF文件
+```python
+def select_pdf(self):
+    ...
+```
+此方法允许用户通过文件对话框选择PDF文件。
+
+### 点击翻译
+```python
+def on_translate_click(self):
+    ...
+```
+此方法定义了在点击"Translate"按钮时的行为。它尝试翻译给定的PDF文件，并在翻译完成后显示提示消息。
+
+## 主函数
+```python
+if __name__ == "__main__":
+    app = TranslatorGUI(translator)
+    app.mainloop()
+```
+此部分负责启动GUI。
+
