@@ -1,8 +1,6 @@
 import os, sys
 import tkinter as tk
 from tkinter import filedialog, messagebox
-# import sys
-# sys.path.append("..")  # 添加上一层目录到 sys.path
 
 from translator.pdf_translator import PDFTranslator
 
@@ -14,17 +12,6 @@ class TranslatorGUI(tk.Tk):
         self.pdf_file_path = tk.StringVar()
         self.file_format = tk.StringVar(value="markdown")  # 默认选择 "markdown"
         self.create_widgets()
-
-# class TranslatorGUI:
-#     def __init__(self, master, translator):
-#         self.master = master
-#         self.master.title("PDF Translator")
-#
-#         self.translator = translator  # PDFTranslator()
-#         self.pdf_file_path = tk.StringVar()
-#         self.file_format = tk.StringVar(value="markdown")  # 默认选择 "markdown"
-#
-#         self.create_widgets()
 
     def create_widgets(self):
         frame = tk.Frame(self.master, padx=20, pady=20)
@@ -74,9 +61,3 @@ class TranslatorGUI(tk.Tk):
 
         except Exception as e:
             messagebox.showerror("错误", f"翻译出错：{str(e)}")
-
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = TranslatorGUI(root)
-    root.mainloop()
