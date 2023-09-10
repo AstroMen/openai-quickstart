@@ -23,9 +23,10 @@ def initialize_sales_bot(vector_store_dir: str="real_estates_sale"):
 
     return SALES_BOT
 
-def sales_chat(message, history):
+def sales_chat(message, history, scenario):
     print(f"[message]{message}")
     print(f"[history]{history}")
+    print(f"[scenario]{scenario}")
     # TODO: 从命令行参数中获取
     enable_chat = True
 
@@ -41,19 +42,26 @@ def sales_chat(message, history):
         return "这个问题我要问问领导"
     
 
-def launch_gradio():
+def launch_gradio(scenario):
     demo = gr.ChatInterface(
         fn=sales_chat,
-        title="房产销售",
-        # retry_btn=None,
-        # undo_btn=None,
+        title=f"{scenario}销售",  # 根据 scenario 参数更改标题
+        inputs=[
+            gr.CheckboxGroup(
+                label="销售场景",
+                options=["电器", "家装", "教育"],
+                default=["电器"],  # 默认选择项
+            ),
+        ],
         chatbot=gr.Chatbot(height=600),
     )
 
     demo.launch(share=True, server_name="0.0.0.0")
 
+
 if __name__ == "__main__":
     # 初始化房产销售机器人
     initialize_sales_bot()
     # 启动 Gradio 服务
-    launch_gradio()
+    scenario = "房产"  # 选择一个默认的场景
+    launch_gradio(scenario)
